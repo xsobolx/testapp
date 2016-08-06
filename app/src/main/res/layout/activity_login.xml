@@ -10,37 +10,9 @@
     tools:context=".LoginActivity">
 
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/login_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/login"
-            android:inputType="textEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login"/>
-
-        <EditText
-            android:id="@+id/password"
-            android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"/>
-
-        <Button
-            android:id="@+id/sign_in"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/button"
-            android:text="SIgn In"
-            android:textColor="@android:color/white"/>
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"></FrameLayout>
 
 </RelativeLayout>

@@ -9,20 +9,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="comxsobolx.github.testapp.MainActivity">
 
-    <comxsobolx.github.testapp.view.MLRoundedImageView
-        android:id="@+id/image"
-        android:layout_width="294dp"
-        android:layout_height="294dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:id="@+id/toggle_buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:weightSum="2"
+        >
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone"/>
+        <Button
+            android:id="@+id/profile_btn"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/leftcorner_button"
+            android:text="Профиль"
+             android:textColor="@android:color/white"
+            />
+
+        <Button
+            android:id="@+id/messages_btn"
+            android:layout_weight="1"
+            android:layout_margin="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/rightcorners_button"
+            android:text="Сообщения"
+            android:textColor="@android:color/white"
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_below="@+id/toggle_buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+
 
 </RelativeLayout>

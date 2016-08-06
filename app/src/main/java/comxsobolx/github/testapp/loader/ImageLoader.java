@@ -22,15 +22,11 @@ import retrofit2.Call;
 public class ImageLoader extends BaseLoader {
     private static final String TAG = ImageLoader.class.getSimpleName();
 
-    private DatabaseHelper databaseHelper;
     private Context context;
-    private ImageView imageView;
 
-    public ImageLoader(Context context, ImageView imageView) {
+    public ImageLoader(Context context) {
         super(context);
-        databaseHelper = new DatabaseHelper(context);
         this.context = context;
-        this.imageView = imageView;
     }
 
     @Override

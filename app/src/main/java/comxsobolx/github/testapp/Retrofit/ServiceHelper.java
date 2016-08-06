@@ -3,6 +3,8 @@ package comxsobolx.github.testapp.Retrofit;
 import android.graphics.Bitmap;
 
 import comxsobolx.github.testapp.model.LoginResponse;
+import comxsobolx.github.testapp.model.MessageResponse;
+import comxsobolx.github.testapp.model.MessageResult;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -49,12 +51,8 @@ public class ServiceHelper {
         return service.basicLogin(login, password, isMobile);
     }
 
-    public Call<LoginResponse> tokenLogin(String token, boolean isMobile){
-        return service.tokenLogin(token, isMobile);
-    }
-
-    public Call<LoginResponse> postMessage(String token, boolean isMobile,
-                                           String uid, String content) {
+    public Call<MessageResponse> postMessage(String token, boolean isMobile,
+                                             String uid, String content) {
         return service.postMessage(token, isMobile, uid, content);
     }
 

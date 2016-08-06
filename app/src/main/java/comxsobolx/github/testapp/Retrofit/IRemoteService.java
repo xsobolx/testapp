@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import java.util.List;
 
 import comxsobolx.github.testapp.model.LoginResponse;
+import comxsobolx.github.testapp.model.MessageResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -33,10 +34,10 @@ public interface IRemoteService {
     @FormUrlEncoded
     @Headers("Authentication:user")
     @POST("json/messages/{uid}")
-    Call<LoginResponse> postMessage(@Header("Authorization") String token,
-                                    @Field("is_mobile") boolean isMobile,
-                                    @Path("uid") String uid,
-                                    @Field("content") String content);
+    Call<MessageResponse> postMessage(@Header("Authorization") String token,
+                                      @Field("is_mobile") boolean isMobile,
+                                      @Path("uid") String uid,
+                                      @Field("content") String content);
 
 
 }

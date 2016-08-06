@@ -15,20 +15,23 @@ import comxsobolx.github.testapp.model.User;
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
     public final static String TABLE_USER = "user";
+    public static final String TABLE_MESSAGES = "messages";
     public final static String DATABASE_NAME = "test";
-    private final static int DATABASE_VERSION = 4;
+    private final static int DATABASE_VERSION = 5;
     public static final String CONTENT_AUTHORITY = "comxsobolx.github.testapp";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
     public static final Uri URI = BASE_CONTENT_URI.buildUpon().appendEncodedPath(TABLE_USER).build();
 
     public static final String KEY_ID = "id";
     public static final String KEY_LOGIN = "login";
-    public static final String KEY_IS_AUTH = "is_auth";
     public static final String KEY_TOKEN = "token";
     public static final String KEY_IMAGE_URL = "image_url";
     public static final String KEY_IMAGE_BYTES = "image_bytes";
 
-    private String selectQuery = "SELECT * FROM " + TABLE_USER + " LIMIT 1";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_RECEIVER = "receiver";
+
+    private String selectUserQuery = "SELECT * FROM " + TABLE_USER + " LIMIT 1";
 
 
     public DatabaseHelper(Context context) {
@@ -47,7 +50,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 KEY_IMAGE_URL + " TEXT, " +
                 KEY_IMAGE_BYTES + " BLOB" +
                 ");";
+
+        String CREATE_MESSAGES_TABLE = "" +
+                "CREATE TABLE IF NOT EXISTS " +
+                TABLE_MESSAGES + "(" +
+                KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                KEY_LOGIN + " TEXT, " +
+                KEY_RECEIVER + " TEXT, " +
+                KEY_MESSAGE + " TEXT(1000) " +
+                ");";
         sqLiteDatabase.execSQL(CREATE_LOGIN_TABLE);
+        sqLiteDatabase.execSQL(CREATE_MESSAGES_TABLE);
     }
 
     @Override
@@ -70,9 +83,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void insertMessage(String login, String receiver, String message) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_LOGIN, login);
+        contentValues.put(KEY_RECEIVER, receiver);
+        contentValues.put(KEY_MESSAGE, message);
+        db.insert(TABLE_MESSAGES, null, contentValues);
+        db.close();
+    }
+
     private boolean userExist(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.rawQuery(selectUserQuery, null);
         if (cursor.moveToFirst()){
             return true;
         }
@@ -84,7 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         User user = new User();
 
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.rawQuery(selectUserQuery, null);
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 user.setLogin(cursor.getString(1));

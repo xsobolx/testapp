@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/toggle_buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:weightSum="2"
+        >
+
+        <ToggleButton
+            android:id="@+id/aleksei_btn"
+            android:layout_margin="0dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/leftcorner_button"
+            android:textOn="Алексей"
+            android:textOff="Алексей"
+            android:textColor="@android:color/white"
+            />
+
+        <ToggleButton
+            android:id="@+id/ivan_btn"
+            android:layout_weight="1"
+            android:layout_margin="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/rightcorners_button"
+            android:textOn="Иван"
+            android:textOff="Иван"
+            android:textColor="@android:color/white"
+            />
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:id="@+id/editText"
+        android:layout_below="@+id/toggle_buttons_layout"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/send_button"
+        android:layout_below="@+id/editText"
+        android:background="@drawable/button"
+        android:layout_width="match_parent"
+        android:text="ОТПРАВИТЬ"
+        android:textColor="@android:color/white"
+        android:layout_height="35dp" />
+
+</RelativeLayout>

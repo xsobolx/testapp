@@ -17,10 +17,12 @@ public class LoginContentProvider extends ContentProvider {
     private static final UriMatcher URI_MATCHER;
 
     private static final int LOGIN_TABLE = 1;
+    private static final int MESSAGES_TABLE = 2;
 
     static {
         URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
         URI_MATCHER.addURI(DatabaseHelper.CONTENT_AUTHORITY, DatabaseHelper.TABLE_USER, LOGIN_TABLE);
+        URI_MATCHER.addURI(DatabaseHelper.CONTENT_AUTHORITY, DatabaseHelper.TABLE_MESSAGES, MESSAGES_TABLE);
     }
 
     private DatabaseHelper databaseHelper;
@@ -55,6 +57,8 @@ public class LoginContentProvider extends ContentProvider {
         switch (URI_MATCHER.match(uri)) {
             case LOGIN_TABLE:
                 return DatabaseHelper.TABLE_USER;
+            case MESSAGES_TABLE:
+                return DatabaseHelper.TABLE_MESSAGES;
             default:
                 return "";
         }

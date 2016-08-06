@@ -1,19 +1,22 @@
 package comxsobolx.github.testapp.loader;
 
-import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.database.Cursor;
+import android.support.v4.content.AsyncTaskLoader;
+
 
 import java.io.IOException;
 
 /**
  * Created by aleksandr on 05.08.16.
  */
-public abstract class BaseLoader extends AsyncTaskLoader<Cursor>{
+public abstract class BaseLoader extends AsyncTaskLoader<Cursor> {
 
     public BaseLoader(Context context) {
         super(context);
     }
+
+
 
     @Override
     protected void onStartLoading() {

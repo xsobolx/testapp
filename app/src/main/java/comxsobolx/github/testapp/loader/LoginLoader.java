@@ -1,5 +1,7 @@
 package comxsobolx.github.testapp.loader;
 
+
+
 import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
@@ -34,6 +36,9 @@ public class LoginLoader extends BaseLoader {
         User user = new User();
         Call<LoginResponse> call = serviceHelper.basicLogin(login, password, true);
         LoginResponse loginResponse = call.execute().body();
+        if (loginResponse == null) {
+            return null;
+        }
         user.setLogin(login);
         user.setToken(loginResponse.getResult().getJwtToken());
         user.setImageUrl(loginResponse.getResult().getProfile().getAvatar().getCdnUid());
