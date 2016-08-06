@@ -20,22 +20,25 @@
 
         <EditText
             android:id="@+id/login"
+            android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Login"/>
+            android:hint="@string/login"/>
 
         <EditText
             android:id="@+id/password"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"/>
+            android:hint="@string/password"/>
 
         <Button
             android:id="@+id/sign_in"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@drawable/button"
-            />
+            android:text="SIgn In"
+            android:textColor="@android:color/white"/>
 
 
     </LinearLayout>
