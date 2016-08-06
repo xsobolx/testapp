@@ -49,11 +49,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
 
     @OnClick(R.id.sign_in)
     public void signIn() {
-//        login = loginET.getText().toString();
-//        password = passwordET.getText().toString();
-
-        login = "kirill@artemenko.info";
-        password = "newpassword";
+        login = loginET.getText().toString();
+        password = passwordET.getText().toString();
 
         if (password.equals("") || (login.equals(""))) {
             Toast.makeText(LoginActivity.this, "Enter login and password", Toast.LENGTH_SHORT).show();
